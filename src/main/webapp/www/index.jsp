@@ -1,3 +1,5 @@
+<%@ page pageEncoding="UTF-8" %>
+
 <jsp:include page="/views/partials/header.jsp" />
 
 
@@ -32,18 +34,20 @@
     margin-bottom: 15px;
     padding: 7px 9px;
   }
+
 </style>
 
 <div class="container">
-
-  <form class="form-signin">
-    <h2 class="form-signin-heading">Please sign in</h2>
-    <input type="text" class="input-block-level" placeholder="Email address">
-    <input type="password" class="input-block-level" placeholder="Password">
+  <div class="${ style }">${ message }</div>
+  <form method="POST" class="form-signin" action="/ServletUsers">
+    <h2 class="form-signin-heading">Connexion</h2>
+    <input name="email" type="email" class="input-block-level" placeholder="Adresse email">
+    <input name="password" type="password" class="input-block-level" placeholder="Mot de passe">
     <label class="checkbox">
       <input type="checkbox" value="remember-me"> Remember me
     </label>
-    <button class="btn btn-large btn-primary" type="submit">Sign in</button>
+    <label>Pas de compte! créez-en <a href="signinUser.jsp">ici</a></label>
+    <button class="btn btn-large btn-primary" type="submit">Connexion</button>
   </form>
 
 </div>

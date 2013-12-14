@@ -20,7 +20,7 @@
        specified for component-scanning -->
   <context-param>
       <param-name>contextConfigLocation</param-name>
-      <param-value>fr.eservices.portal.AppConfig</param-value>
+      <param-value>fr.eservice.portal.AppConfig</param-value>
   </context-param>
 
   <!-- Bootstrap the root application context as usual using ContextLoaderListener -->
@@ -44,14 +44,65 @@
            and fully-qualified @Configuration classes -->
       <init-param>
           <param-name>contextConfigLocation</param-name>
-          <param-value>fr.eservices.portal.web.WebConfig</param-value>
+          <param-value>fr.eservice.web.WebConfig</param-value>
       </init-param>
   </servlet>
-
   <!-- map all requests for /app/* to the dispatcher servlet -->
   <servlet-mapping>
       <servlet-name>dispatcher</servlet-name>
       <url-pattern>/</url-pattern>
   </servlet-mapping>
+  
+  <!-- Servlet pour l'inscription de l'tilisateur  -->
+  <servlet>
+        <servlet-name>SignInUser</servlet-name>
+        <servlet-class>fr.eservice.portal.servlets.SignInUser</servlet-class>
+        <init-param>
+			<param-name>uri</param-name> 
+			<param-value>/images-users/</param-value> 
+		</init-param>
+       	<multipart-config>
+			<location>/Users/Abderr/Pictures/images-users</location>
+			<max-file-size>10485760</max-file-size> <!-- 10 Mo -->
+			<max-request-size>52428800</max-request-size> <!-- 5 x 10 Mo -->
+			<file-size-threshold>1048</file-size-threshold> <!-- 1 Mo -->
+		</multipart-config>
+  </servlet>
+  <servlet-mapping>
+        <servlet-name>SignInUser</servlet-name>
+        <url-pattern>/SignInUser</url-pattern>
+  </servlet-mapping>
+  
+  <!-- Servlet pour l'authentification  de l'tilisateur  -->
+  <servlet>
+        <servlet-name>ServletUsers</servlet-name>
+        <servlet-class>fr.eservice.portal.servlets.ServletUsers</servlet-class>
+  </servlet>
+  <servlet-mapping>
+        <servlet-name>ServletUsers</servlet-name>
+        <url-pattern>/ServletUsers</url-pattern>
+  </servlet-mapping>
+  
+  <!-- Servlet pour l'inscription de l'tilisateur  -->
+  <servlet>
+        <servlet-name>UpdateProfilServelt</servlet-name>
+        <servlet-class>fr.eservice.portal.servlets.UpdateProfilServelt</servlet-class>
+        <init-param>
+			<param-name>uri</param-name> 
+			<param-value>/images-users/</param-value> 
+		</init-param>
+       	<multipart-config>
+			<location>/Users/Abderr/Pictures/images-users</location>
+			<max-file-size>10485760</max-file-size> <!-- 10 Mo -->
+			<max-request-size>52428800</max-request-size> <!-- 5 x 10 Mo -->
+			<file-size-threshold>1048576</file-size-threshold> <!-- 1 Mo -->
+		</multipart-config>
+  </servlet>
+  <servlet-mapping>
+        <servlet-name>UpdateProfilServelt</servlet-name>
+        <url-pattern>/UpdateProfilServelt</url-pattern>
+  </servlet-mapping>
+  
+  
     
 </web-app>

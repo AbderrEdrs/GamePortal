@@ -2,6 +2,8 @@ package portal;
 
 import java.io.File;
 
+import javax.servlet.MultipartConfigElement;
+
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
@@ -9,6 +11,7 @@ import org.springframework.web.context.support.AnnotationConfigWebApplicationCon
 import org.springframework.web.servlet.DispatcherServlet;
 
 import fr.eservice.portal.AppConfig;
+import fr.eservice.portal.servlets.*;
 import fr.eservice.web.WebConfig;
 
 
@@ -37,7 +40,18 @@ public class TestServer {
         context.setClassLoader(Thread.currentThread().getContextClassLoader());
         context.addServlet(jspServletHolder, "*.jsp");
         context.addServlet(mvcServletHolder, "/");
-        context.setResourceBase( "src/main/webapp/www" );
+        
+        ServletHolder SignInUser = new ServletHolder(SignInUser.class);
+        SignInUser.getRegistration().setMultipartConfig(new MultipartConfigElement("/Users/Abderr/Documents/workspace/GamePortal/src/main/webapp/www/images/", 1048576, 1048576, 262144));
+        context.addServlet(SignInUser, "/SignInUser");
+        
+        ServletHolder UpdateProfilServelt = new ServletHolder(UpdateProfilServelt.class);
+        UpdateProfilServelt.getRegistration().setMultipartConfig(new MultipartConfigElement("/Users/Abderr/Documents/workspace/GamePortal/src/main/webapp/www/images/", 1048576, 1048576, 262144));
+        context.addServlet(UpdateProfilServelt, "/UpdateProfilServelt");
+        
+        context.addServlet(ServletUsers.class.getName(), "/ServletUsers");
+        
+        context.setResourceBase( "src/main/webapp/www/" );
         context.setInitParameter("contextClass", AnnotationConfigWebApplicationContext.class.getName());
         context.setInitParameter("contextConfigLocation", AppConfig.class.getName());
 		
