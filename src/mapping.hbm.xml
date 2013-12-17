@@ -1,0 +1,20 @@
+<?xml version="1.0"?><!DOCTYPE hibernate-mapping
+	PUBLIC "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+	
+<hibernate-mapping>
+
+	<class name="User" table="user">
+		<id name="idUser" type="int" column="iduser">
+			<generator class="native"/>
+		</id>
+		<property name="username" type="string" not-null="true" />
+		<property name="password" type="string" not-null="true" />
+		<property name="lastname" type="string" not-null="true" />
+		<property name="firstname" type="string" not-null="true" />
+		<property name="eamil" type="string" not-null="true" />
+		<property name="avatar" type="string" not-null="true" />
+		<property name="modified" type="date" not-null="true" />
+
+	</class>
+</hibernate-mapping>

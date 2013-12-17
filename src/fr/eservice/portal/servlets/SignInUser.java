@@ -71,10 +71,10 @@ public class SignInUser extends HttpServlet {
         	 message = "Votre confirmation de mot de passe n'est pas valide. <br> <a href=\"/signinUser.jsp\">Cliquez ici</a> pour accéder au formulaire d'inscription.";
         	 forwardTo = "/signinUser.jsp";
         	 style = "alert alert-error";
-       /* } else if(userdao.checkUser(username) != null) {
+        } else if(userdao.checkUser(username) != null) {
         	message = "Le pseudo que vous avez choisi existe déjà";
 	       	forwardTo = "/signinUser.jsp";
-	       	style = "alert alert-error";*/
+	       	style = "alert alert-error";
         }else {
             message = "Bienveneue - votre compte a été bien créé !";
        
