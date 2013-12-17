@@ -1,149 +1,97 @@
-<%@page import="sun.awt.AppContext"%>
-<%@page import="org.springframework.context.ApplicationContext"%>
-<%@page import="org.springframework.web.context.WebApplicationContext"%>
-<%@page import="org.springframework.web.context.support.WebApplicationContextUtils"%>
-<%@page import="factoryfun.donnees.*"%>
 <!DOCTYPE html>
 <html>
 	<head>
 	  <meta charset="utf-8">
 	  <title>FactoryFun</title>
-	  <link rel="stylesheet" type="text/css" href="/assets/factory/css/style3.css">
+	  <link rel="stylesheet" type="text/css" href="/assets/factory/css/style.css">
 	</head>
 	<body>
-	  <!-- Le reste du contenu -->
-	  <table style="margin : auto;  margin-top : 50px; font-family : 'arial'; font-size : 40px;">
-	  	<tbody>
-	  		<% Composant[][] plateau = ((Plateau) request.getAttribute("plateau")).getPlateau(); %>
-	  		<%
-	  		String affichage = "";
-	  		
-	  		for (int i = 0; i < plateau.length; i++)
-			{
-				affichage += "<tr>";
-						
-				for (int j = 0; j < plateau[i].length; j++)
-				{
-					String composant = (plateau[i][j] == null) ? "" : plateau[i][j].toString();
-					
-					affichage += "<td><div>" + composant + "</div></td>";
-				}
-				
-				affichage += "</tr>";
-			}
-	  		out.print(affichage);
-	  		%>
-	  	</tbody>
-	  </table>
-	  <script type="text/javascript">
-	  	var composants = document.querySelectorAll('div');
-	  	
-	  	for (var i = 0; i < composants.length; i++)
-	  	{
-	  		composants[i].onclick =	function(e)
-	  								{
-	  									this.parentNode.nextElementSibling.parentNode.removeChild(this.parentNode.nextElementSibling);
-	  									this.parentNode.setAttribute('colspan', '2');
-	  									this.parentNode.style.width = '201px';
-	  									this.innerHTML = '<img src="/assets/factory/img/machine.png"/>';
-	  								};
-	  	}
-	  	
-	  	
-	  	function coordonnees(element)
-	  	{
-	  		var position = element;
-	  										
-	  		var v_left = position.offsetLeft + toInt(getComputedStyle(position, null).borderLeftWidth);
-	  		var v_top = position.offsetTop + toInt(getComputedStyle(position, null).borderTopWidth);
-	  		
-	  		while(position = position.offsetParent)
-	  		{
-	  			v_left += position.offsetLeft + toInt(getComputedStyle(position, null).borderLeftWidth);
-	  			v_top += position.offsetTop + toInt(getComputedStyle(position, null).borderTopWidth);
-	  		}
-	  		
-	  		return {left : v_left, top : v_top};
-	  	};
+		<div id="barre"></div>
+		<table id="structure">
+			<tbody>
+				<tr>
+					<td style="width : 1%; height : 100%;">
+						<table style="width : 100%; height : 100%;">
+							<tbody>
+								<tr>
+									<td style="height : 200px; vertical-align : top;">
+										<div style="width : 400px; height : 179px; background : url('/assets/factory/img/scoreboard.png'); background-size : 400px; background-repeat : no-repeat;">
+											<div id="scoreboard" style="position : relative; left : 25px; top : 3px; width : 373px; height : 172px;">
+												<img id="score" style="position : absolute; height : 22px; width : 20px;" src=" /assets/factory/img/score.png"/>
+											</div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td style="vertical-align : top;">
+										<button id="next" class="btn_validation">1er ROUND</button>
+										<div style="background-color : rgba(250,100,100,0.4);">
+											<div id="msg" style="line-height : 20px;">La machine MULTIFITTER nécessite d'être alimentée au niveau de son input gauche pour fonctionner correctement.</br>Ce problème doit être réglé si vous voulez passer au 2eme round.</div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td style="vertical-align : top;">
+										<table style="width : 100%;">
+											<tbody>
+												<tr>
+													<td style="width : 30%; vertical-align : top;">
+														<div class="title">CONNECTORS</div>
+														<table id="connectors" style="width : 100%;">
+															<tbody>
+																<tr></tr>
+															</tbody>
+														</table>
+													</td>
+												</tr>
+												<tr>
+													<td style="width : 70%; vertical-align : top;"><div class="title">CONTAINERS</div></td>
+												</tr>
+											</tbody>
+										</table>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</td>
+					<td style="text-align : center;">
+						<table style="display : inline-block;">
+							<tbody>
+								<tr>
+									<td>
+										<div style="height : 630px; width : 778px; background-image : url('/assets/factory/img/plateau.png'); background-size : 100%;">
+											<div id="plateau" style="position : relative; left : 12px; top : 15px; width : 750px; height : 600px;"></div>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</td>
+					<td style="width : 20%;">
+						<table style="width : 100%; height : 100%;">
+							<tbody>
+								<tr>
+									<td id="machines" style="height : 25%; vertical-align : top;">
+										<div class="title">MACHINES</div>
+									</td>
+								</tr>
+								<tr>
+									<td id="containers" style="height : 25%; vertical-align : top;">
+										<div class="title">CONTAINERS</div>
+									</td>
+								</tr>
+								<tr>
+									<td id="reservoirs" style="height : 25%; vertical-align : top;">
+										<div class="title">RESERVOIRS</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	  <script type="text/javascript" src="/assets/factory/js/script.js"></script>
 
-	  	function toInt(element)
-	  	{
-	  		return parseInt(element.substring(0, element.length - 2));
-	  	}
-	  	
-	  	
-	  	var cmd_pressed = {};
-	  	var destinations = [];
-	  	var destination = null;
-	  	
-	  	
-	  	
-	  	var cmd_mousedown =	function(e)
-							{
-								e.preventDefault();
-					
-								//this.parentNode.style.height = toInt(getComputedStyle(this.parentNode).height) + 'px';
-					
-								var c = coordonnees(this);
-								//this.style.width = toInt(getComputedStyle(this).width) + 'px';
-								this.style.top = c.top + 'px';
-								this.style.left = c.left + 'px';
-								this.style.position = 'absolute';
-								this.style.zIndex = '1';
-					
-								cmd_pressed.div = this;
-								cmd_pressed.dx = e.clientX - c.left;											
-								cmd_pressed.dy = e.clientY - c.top;
-								this.style.cursor = '-webkit-grabbing';
-								document.body.style.cursor = '-webkit-grabbing';
-							};
-
-		var cmd_mousemove =	function(e)
-							{
-								if (cmd_pressed.div)
-								{
-									cmd_pressed.div.style.top = (e.clientY - cmd_pressed.dy) + 'px';
-									cmd_pressed.div.style.left = (e.clientX - cmd_pressed.dx) + 'px';									
-								}
-							};
-				
-		var cmd_mouseup =	function(e)
-							{
-								if (cmd_pressed.div)
-								{
-									cmd_pressed.div.removeAttribute('style');
-									document.body.style.cursor = '';
-									cmd_pressed = {};
-								}
-							};
-		
-		
-		
-		var ok = document.querySelector('#ok');
-		
-		ok.onmousedown = cmd_mousedown;
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		var event_pressed = '';
-		
-		window.onmousemove =	function(e)
-								{
-									cmd_mousemove(e);
-								};
-					
-		window.onmouseup =	function(e)
-							{
-								cmd_mouseup(e);
-							};
-	  </script>
 	</body>
 </html>

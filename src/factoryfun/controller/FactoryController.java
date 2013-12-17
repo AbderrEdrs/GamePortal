@@ -21,7 +21,7 @@ public class FactoryController
 		
 		model.addAttribute("plateau", init.getJoueur().getPlateau());
 		
-		return "factory/index2";
+		return "factory/index";
 	}
 
 	@RequestMapping("/test")
