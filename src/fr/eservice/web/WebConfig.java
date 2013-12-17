@@ -11,15 +11,16 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import org.springframework.web.servlet.view.JstlView;
 import org.springframework.web.servlet.view.UrlBasedViewResolver;
 
+
 @Configuration
 @EnableWebMvc
-@ComponentScan({"fr.eservice.portal","fr.eservice.web"})
+@ComponentScan({"factoryfun","fr.eservice.portal","fr.eservice.web"})
 public class WebConfig extends WebMvcConfigurerAdapter {
 
 	@Bean
 	public UrlBasedViewResolver urlBasedViewResolver() {
 		UrlBasedViewResolver resolver = new UrlBasedViewResolver();
-		resolver.setPrefix("/src/main/webapp/www/views/");
+		//resolver.setPrefix("src/main/webapp/www/");
 		resolver.setSuffix(".jsp");
 		resolver.setViewClass(JstlView.class);
 		
