@@ -166,7 +166,7 @@ function generateContainer(name)
 				
 								var c = coordonnees(div);
 								div.style.width = toInt(getComputedStyle(div).width) + 'px';
-								div.style.left = c.left + 'px';							
+								div.style.left = c.left + 'px';				
 								div.style.top = c.top + 'px';
 								div.style.position = 'absolute';
 								div.style.zIndex = '1';
@@ -263,6 +263,23 @@ var cmd_mouseup =	function(e)
 /***********************************************************************************************************************/
 /************INITIALISATION COMPOSANTS***********INITIALISATION COMPOSANTS***********INITIALISATION COMPOSANTS**********/
 /***********************************************************************************************************************/
+					/**************************************************************************/
+					var xhr = new XMLHttpRequest;
+
+					xhr.onreadystatechange =	function(e)
+												{
+													if (xhr.readyState == 4 && xhr.status == 200)
+													{
+														/*var ok = JSON.parse(xhr.responseText);
+														
+														alert(ok.name);*/
+														generateMachine(xhr.responseText);
+													}
+												};
+
+					xhr.open('GET', '/factoryfun/extractmachine');
+					xhr.send(null);
+					/**************************************************************************/
 /*generateMachine('multi-fitter');
 generateMachine('maximixer');
 generateMachine('cwality_06');
@@ -271,7 +288,8 @@ generateMachine('reactor_4.6');
 generateMachine('supershaker');
 generateMachine('pack-o-matic');*/
 generateReservoir('reservoir');
-generateReservoir('reservoir_black');
+generateReservoir('reservoir');
+generateReservoir('reservoir');
 /*generateMachine('minifreezer');
 generateMachine('holl_boxer');
 generateMachine('megabrowner');
@@ -280,7 +298,7 @@ generateMachine('superseal');
 generateMachine('minimega');
 generateMachine('minigiga-bot');
 generateMachine('verdamp_2.1');*/
-generateMachine('minimizer');
+//generateMachine('minimizer');
 generateContainer('container_red');
 generateContainer('container_blue');
 generateContainer('container_green');
@@ -341,9 +359,47 @@ for (i = 0; i < colonnes; i++)
 
 									xhr.open('POST', '/factoryfun/action');
 									xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-									xhr.send('name=' + cmd_pressed.name + '&x=' + this.j + '&y=' + this.i + '&direction=' + cmd_pressed.direction);
+									xhr.send('name=' + cmd_pressed.name + '&type=' + cmd_pressed.type + '&x=' + this.j + '&y=' + this.i + '&direction=' + cmd_pressed.direction);
 									/**************************************************************************/
-										
+									
+									/*******evenement pour le composant créé en cas de redeplacement ***********/
+									var div_tmp = cmd_pressed.div;
+									
+									div.addEventListener('mousedown',
+									{
+										handleEvent :	function(e)
+														{
+											alert('okkk');
+															if (e.button == 0)
+															{
+																e.preventDefault();
+																
+																var div = e.target;
+												
+																var c = coordonnees(div);
+																div.style.width = toInt(getComputedStyle(div).width) + 'px';
+																div.style.left = c.left + 'px';
+																div.style.top = c.top + 'px';
+																div.style.position = 'absolute';
+																div.style.zIndex = '1';
+													
+																cmd_pressed.div = div;
+																cmd_pressed.dx = e.clientX - c.left;											
+																cmd_pressed.dy = e.clientY - c.top;
+																cmd_pressed.name = this.name;
+																cmd_pressed.type = MACHINE;
+																cmd_pressed.direction = RIGHT_SIDE;
+																div.style.cursor = '-webkit-grabbing';
+																document.body.style.cursor = '-webkit-grabbing';
+													
+																div.style.pointerEvents = 'none';
+															}
+														},
+										name : name,
+									},
+									false);
+									/*******evenement pour le composant créé en cas de redeplacement ***********/
+									
 									cmd_pressed.div = null;
 								},
 				i : i,
@@ -460,7 +516,24 @@ button.onclick =	function()
 						round++;
 						button.textContent = round + 'eme ROUND';
 						
-						generateMachine('flexfixer');
+						
+						/**************************************************************************/
+						var xhr = new XMLHttpRequest;
+
+						xhr.onreadystatechange =	function(e)
+													{
+														if (xhr.readyState == 4 && xhr.status == 200)
+														{
+															/*var ok = JSON.parse(xhr.responseText);
+															
+															alert(ok.name);*/
+															generateMachine(xhr.responseText);
+														}
+													};
+
+						xhr.open('GET', '/factoryfun/extractmachine');
+						xhr.send(null);
+						/**************************************************************************/
 						
 						score_level++;
 						setScoreLevel(score_level);

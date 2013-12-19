@@ -26,7 +26,7 @@
 									<td style="vertical-align : top;">
 										<button id="next" class="btn_validation">1er ROUND</button>
 										<div style="background-color : rgba(250,100,100,0.4);">
-											<div id="msg" style="line-height : 20px;">La machine MULTIFITTER nÃ©cessite d'Ãªtre alimentÃ©e au niveau de son input gauche pour fonctionner correctement.</br>Ce problÃ¨me doit Ãªtre rÃ©glÃ© si vous voulez passer au 2eme round.</div>
+											<div id="msg" style="line-height : 20px;">La machine MULTIFITTER nécessite d'être alimentée au niveau de son input gauche pour fonctionner correctement.</br>Ce problème doit être réglé si vous voulez passer au 2eme round.</div>
 										</div>
 									</td>
 								</tr>

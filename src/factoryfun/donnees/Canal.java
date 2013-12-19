@@ -6,7 +6,9 @@ public class Canal
 	public static final String IN_LEFT = "input_left";
 	public static final String IN_CENTER = "input_center";
 	public static final String IN_RIGHT = "input_right";
-	public static final String OUT = "output";
+	public static final String OUT_LEFT = "output_left";
+	public static final String OUT_CENTER = "output_center";
+	public static final String OUT_RIGHT = "output_right";
 	
 	public static final int RED = 1;
 	public static final int GREEN = 2;

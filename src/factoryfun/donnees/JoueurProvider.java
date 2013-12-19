@@ -6,18 +6,18 @@ import org.springframework.stereotype.Component;
 public class JoueurProvider
 {
 	
-	private Joueur joueur;
+	private Partie partie;
 	
 	public JoueurProvider()
 	{
 		System.out.println("*** Initialisation PlateauProvider ***");
 		
-		joueur = new Joueur();
+		partie = new Partie();
 	}
 	
-	public Joueur getJoueur()
+	public Partie getPartie()
 	{
-		return joueur;
+		return partie;
 	}
 	
 }

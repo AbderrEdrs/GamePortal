@@ -2,7 +2,7 @@ package factoryfun.donnees;
 
 import java.util.ArrayList;
 
-public class Tuyau extends Composant
+public class Connector extends Composant
 {
 
 	public static final int LEFT = 1;
@@ -13,15 +13,16 @@ public class Tuyau extends Composant
 	private ArrayList<Integer> inputs;
 	private String img;
 	
-	private Tuyau(int input, String img)
+	private Connector(int input, String img)
 	{
+		super();
 		inputs = new ArrayList<Integer>();
 		inputs.add(input);
 		
 		this.img = img;
 	}
 	
-	private Tuyau(int input_1, int input_2, String img)
+	private Connector(int input_1, int input_2, String img)
 	{
 		inputs = new ArrayList<Integer>();
 		inputs.add(input_1);
@@ -30,7 +31,7 @@ public class Tuyau extends Composant
 		this.img = img;
 	}
 	
-	private Tuyau(int input_1, int input_2, int input_3, String img)
+	private Connector(int input_1, int input_2, int input_3, String img)
 	{
 		inputs = new ArrayList<Integer>();
 		inputs.add(input_1);
@@ -40,9 +41,9 @@ public class Tuyau extends Composant
 		this.img = img;
 	}
 	
-	private static Tuyau createCompleteTuyau(String img)
+	private static Connector createCompleteTuyau(String img)
 	{
-		Tuyau t = new Tuyau(LEFT, img);
+		Connector t = new Connector(LEFT, img);
 		
 		t.addTuyau(LEFT);
 		t.addTuyau(RIGHT);
@@ -52,24 +53,24 @@ public class Tuyau extends Composant
 		return t;
 	}
 
-	public static Tuyau createCrossTuyau()
+	public static Connector createCrossTuyau()
 	{
 		return createCompleteTuyau("+");
 	}
 	
-	public static Tuyau createLTuyau()
+	public static Connector createLTuyau()
 	{
-		return new Tuyau(TOP, RIGHT, "L");
+		return new Connector(TOP, RIGHT, "L");
 	}
 	
-	public static Tuyau createITuyau()
+	public static Connector createITuyau()
 	{
-		return new Tuyau(TOP, BOTTOM, "I");
+		return new Connector(TOP, BOTTOM, "I");
 	}
 	
-	public static Tuyau createDashTuyau()
+	public static Connector createDashTuyau()
 	{
-		return new Tuyau(LEFT, RIGHT, "-");
+		return new Connector(LEFT, RIGHT, "-");
 	}
 	
 	public void addTuyau(int input)
@@ -86,6 +87,13 @@ public class Tuyau extends Composant
 	public String toString()
 	{
 		return img;
+	}
+
+	@Override
+	public String checkRules(Composant composant)
+	{
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

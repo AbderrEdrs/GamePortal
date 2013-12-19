@@ -15,7 +15,8 @@ import org.springframework.web.servlet.view.UrlBasedViewResolver;
 @Configuration
 @EnableWebMvc
 @ComponentScan({"factoryfun","fr.eservice.portal","fr.eservice.web"})
-public class WebConfig extends WebMvcConfigurerAdapter {
+public class WebConfig extends WebMvcConfigurerAdapter
+{
 
 	@Bean
 	public UrlBasedViewResolver urlBasedViewResolver() {

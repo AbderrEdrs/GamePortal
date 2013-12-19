@@ -8,44 +8,60 @@ import com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader.Array;
 public class Machine extends Composant
 {
 	
+	private String name;
 	private int production;
 	private ArrayList<Canal> canaux;
-	private String img;
 	
-	public Machine(int production, int couleur_out, int quantite_out, Canal input, String img)
+	private Machine(int production, Canal output, Canal input, String name)
 	{
+		super();
 		this.production = production;
 		
 		canaux = new ArrayList<Canal>();
-		canaux.add(new Canal(Canal.OUT, couleur_out, quantite_out));
+		canaux.add(output);
 		canaux.add(input);
 		
-		this.img = img;
+		this.name = name;
 	}
 	
-	public Machine(int production, int couleur_out, int quantite_out, Canal input_1, Canal input_2, String img)
+	private Machine(int production, Canal output, Canal input_1, Canal input_2, String name)
 	{
+		super();
 		this.production = production;
 		
 		canaux = new ArrayList<Canal>();
-		canaux.add(new Canal(Canal.OUT, couleur_out, quantite_out));
+		canaux.add(output);
 		canaux.add(input_1);
 		canaux.add(input_2);
 		
-		this.img = img;
+		this.name = name;
 	}
 	
-	public Machine(int production, int couleur_out, int quantite_out, Canal input_1, Canal input_2, Canal input_3, String img)
+	private Machine(int production, Canal output, Canal input_1, Canal input_2, Canal input_3, String name)
 	{
+		super();
 		this.production = production;
 		
 		canaux = new ArrayList<Canal>();
-		canaux.add(new Canal(Canal.OUT, couleur_out, quantite_out));
+		canaux.add(output);
 		canaux.add(input_1);
 		canaux.add(input_2);
 		canaux.add(input_3);
 		
-		this.img = img;
+		this.name = name;
+	}
+	
+	public static Machine createMachine(String name)
+	{
+		switch (name)
+		{
+			case "minimizer" :
+				return new Machine(3, new Canal(Canal.OUT_LEFT, Canal.BLUE, 1), new Canal(Canal.IN_CENTER, Canal.RED, 3), "minimizer");
+				
+			default :
+				return null;
+		}
+		
 	}
 	
 	public ArrayList<Canal> getCanaux()
@@ -63,20 +79,27 @@ public class Machine extends Composant
 		this.production = production;
 	}
 
-	public String getImg()
+	public String getName()
 	{
-		return img;
+		return name;
 	}
 
-	public void setImg(String img)
+	public void setName(String name)
 	{
-		this.img = img;
+		this.name = name;
 	}
 	
 	@Override
 	public String toString()
 	{
-		return img;
+		return name;
+	}
+
+	@Override
+	public String checkRules(Composant composant)
+	{
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }

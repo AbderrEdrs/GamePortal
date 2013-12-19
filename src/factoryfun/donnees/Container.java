@@ -1,16 +1,24 @@
 package factoryfun.donnees;
 
-public class Source extends Composant
+public class Container extends Composant
 {
 
-	public Source()
+	public Container()
 	{
+		super();
 	}
 
 	@Override
 	public String toString()
 	{
 		return "S";
+	}
+
+	@Override
+	public String checkRules(Composant composant)
+	{
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
