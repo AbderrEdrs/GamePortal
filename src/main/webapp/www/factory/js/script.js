@@ -3,6 +3,11 @@ const RESERVOIR = 'reservoir';
 const CONTAINER = 'container';
 const CONNECTOR = 'connector';
 
+const LEFT_SIDE = 'left';
+const RIGHT_SIDE = 'right';
+const TOP_SIDE = 'top';
+const BOTTOM_SIDE = 'bottom';
+
 var i;
 var j;
 var plateau = [];
@@ -85,6 +90,7 @@ function generateMachine(name)
 								cmd_pressed.dy = e.clientY - c.top;
 								cmd_pressed.name = this.name;
 								cmd_pressed.type = MACHINE;
+								cmd_pressed.direction = RIGHT_SIDE;
 								div.style.cursor = '-webkit-grabbing';
 								document.body.style.cursor = '-webkit-grabbing';
 					
@@ -127,6 +133,7 @@ function generateReservoir(name)
 								cmd_pressed.dy = e.clientY - c.top;
 								cmd_pressed.name = this.name;
 								cmd_pressed.type = RESERVOIR;
+								cmd_pressed.direction = RIGHT_SIDE;
 								div.style.cursor = '-webkit-grabbing';
 								document.body.style.cursor = '-webkit-grabbing';
 					
@@ -169,6 +176,7 @@ function generateContainer(name)
 								cmd_pressed.dy = e.clientY - c.top;
 								cmd_pressed.name = this.name;
 								cmd_pressed.type = CONTAINER;
+								cmd_pressed.direction = RIGHT_SIDE;
 								div.style.cursor = '-webkit-grabbing';
 								document.body.style.cursor = '-webkit-grabbing';
 					
@@ -212,7 +220,8 @@ function generateConnector(name)
 								cmd_pressed.dx = e.clientX - c.left;											
 								cmd_pressed.dy = e.clientY - c.top;
 								cmd_pressed.name = this.name;
-								cmd_pressed.type = CONTAINER;
+								cmd_pressed.type = CONNECTOR;
+								cmd_pressed.direction = RIGHT_SIDE;
 								div.style.cursor = '-webkit-grabbing';
 								document.body.style.cursor = '-webkit-grabbing';
 					
@@ -314,28 +323,27 @@ for (i = 0; i < colonnes; i++)
 									cmd_pressed.div.style.left = plateau[this.i][this.j].x + 'px';
 									cmd_pressed.div.style.top = plateau[this.i][this.j].y + 'px';
 
-									if (cmd_pressed.type == MACHINE)
-									{
-										/**************************************************************************/
-										var xhr = new XMLHttpRequest;
+									//if (cmd_pressed.type == MACHINE)
+									
+									/**************************************************************************/
+									var xhr = new XMLHttpRequest;
 
-										xhr.onreadystatechange =	function(e)
+									xhr.onreadystatechange =	function(e)
+																{
+																	if (xhr.readyState == 4 && xhr.status == 200)
 																	{
-																		if (xhr.readyState == 4 && xhr.status == 200)
-																		{
-																			alert(xhr.responseText);
-																		}
-																	};
+																		/*var ok = JSON.parse(xhr.responseText);
+																		
+																		alert(ok.name);*/
+																		alert(xhr.responseText);
+																	}
+																};
 
-										xhr.open('POST', '/factoryfun/action');
-										//xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-										//xhr.setRequestHeader("Content-length", 'ok=oe'.length);
-										xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-										//xhr.setRequestHeader("Connection", "close");
-										xhr.send('name=' + cmd_pressed.name);
-										//xhr.send();
-										/**************************************************************************/
-									}
+									xhr.open('POST', '/factoryfun/action');
+									xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+									xhr.send('name=' + cmd_pressed.name + '&x=' + this.j + '&y=' + this.i + '&direction=' + cmd_pressed.direction);
+									/**************************************************************************/
+										
 									cmd_pressed.div = null;
 								},
 				i : i,
@@ -412,24 +420,28 @@ window.onkeydown =	function(e)
 								cmd_pressed.div.src = asset(cmd_pressed.name + '_left.png');
 								cmd_pressed.div.style.width = (taille_composant * u_width) + 'px';
 								cmd_pressed.div.style.height = taille_composant + 'px';
+								cmd_pressed.direction = LEFT_SIDE;
 							}
 							else if (key == UP)
 							{
 								cmd_pressed.div.src = asset(cmd_pressed.name + '_up.png');
 								cmd_pressed.div.style.width = taille_composant + 'px';
-								cmd_pressed.div.style.height = (taille_composant * u_width) + 'px';											
+								cmd_pressed.div.style.height = (taille_composant * u_width) + 'px';
+								cmd_pressed.direction = TOP_SIDE;
 							}
 							else if (key == RIGHT)
 							{
 								cmd_pressed.div.src = asset(cmd_pressed.name + '.png');
 								cmd_pressed.div.style.width = (taille_composant * u_width) + 'px';
 								cmd_pressed.div.style.height = taille_composant + 'px';
+								cmd_pressed.direction = RIGHT_SIDE;
 							}
 							else if (key == DOWN)
 							{
 								cmd_pressed.div.src = asset(cmd_pressed.name + '_down.png');
 								cmd_pressed.div.style.width = taille_composant + 'px';
 								cmd_pressed.div.style.height = (taille_composant * u_width) + 'px';
+								cmd_pressed.direction = BOTTOM_SIDE;
 							}
 						}
 					};
