@@ -14,6 +14,8 @@ public abstract class Composant
 	
 	@Override
 	public abstract String toString();
+	
+	public abstract String getType();
 
 	public String getDirection()
 	{

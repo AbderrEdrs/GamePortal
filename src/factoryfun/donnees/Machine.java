@@ -58,8 +58,59 @@ public class Machine extends Composant
 			case "minimizer" :
 				return new Machine(3, new Canal(Canal.OUT_LEFT, Canal.BLUE, 1), new Canal(Canal.IN_CENTER, Canal.RED, 3), "minimizer");
 				
+			case "cb_melting_pot" :
+				return new Machine(7, new Canal(Canal.OUT_RIGHT, Canal.RED, 2), new Canal(Canal.IN_CENTER, Canal.ORANGE, 2), new Canal(Canal.IN_RIGHT, Canal.GREEN, 1), new Canal(Canal.IN_LEFT, Canal.BLUE, 2), "cb_melting_pot");
+			
+			case "cwality_06" :
+				return new Machine(8, new Canal(Canal.OUT_RIGHT, Canal.RED, 3), new Canal(Canal.IN_CENTER, Canal.ORANGE, 2), new Canal(Canal.IN_RIGHT, Canal.GREEN, 1), "cwality06");
+				
+			case "flexfixer" :
+				return new Machine(8, new Canal(Canal.OUT_RIGHT, Canal.BLUE, 3), new Canal(Canal.IN_CENTER, Canal.ORANGE, 2), new Canal(Canal.IN_LEFT, Canal.RED, 3), "flexfixer");
+				
+			case "holl_boxer" :
+				return new Machine(7, new Canal(Canal.OUT_RIGHT, Canal.GREEN, 3), new Canal(Canal.IN_CENTER, Canal.BLUE, 2), new Canal(Canal.IN_LEFT, Canal.ORANGE, 3), "holl_boxer");
+				
+			case "minimega" :
+				return new Machine(5, new Canal(Canal.OUT_RIGHT, Canal.RED, 1), new Canal(Canal.IN_LEFT, Canal.BLUE, 1), new Canal(Canal.IN_RIGHT, Canal.ORANGE, 1), "minimega");
+				
+			case "high_pressor" :
+				return new Machine(9, new Canal(Canal.OUT_RIGHT, Canal.ORANGE, 1), new Canal(Canal.IN_LEFT, Canal.RED, 2), new Canal(Canal.IN_CENTER, Canal.GREEN, 1), "high_pressor");
+				
+			case "megabrowner" :
+				return new Machine(5, new Canal(Canal.OUT_RIGHT, Canal.ORANGE, 1), new Canal(Canal.IN_LEFT, Canal.RED, 2), new Canal(Canal.IN_CENTER, Canal.GREEN, 1), "megabrowner");
+				
+			case "magnetizer" :
+				return new Machine(9, new Canal(Canal.OUT_RIGHT, Canal.ORANGE, 1), new Canal(Canal.IN_LEFT, Canal.RED, 2), new Canal(Canal.IN_CENTER, Canal.GREEN, 1), "magnetizer");
+			
+			case "maximixer" :
+				return new Machine(6, new Canal(Canal.OUT_RIGHT, Canal.ORANGE, 1), new Canal(Canal.IN_LEFT, Canal.RED, 2), new Canal(Canal.IN_CENTER, Canal.GREEN, 1), "maximixer");
+			
+			case "multifilter" :
+				return new Machine(6, new Canal(Canal.OUT_RIGHT, Canal.ORANGE, 1), new Canal(Canal.IN_LEFT, Canal.RED, 2), new Canal(Canal.IN_CENTER, Canal.GREEN, 1), "multifilter");
+				
+			case "minifreezer" :
+				return new Machine(7, new Canal(Canal.OUT_RIGHT, Canal.ORANGE, 1), new Canal(Canal.IN_LEFT, Canal.RED, 2), new Canal(Canal.IN_CENTER, Canal.GREEN, 1), "minifreezer");
+				
+			case "pack-o-matic" :
+				return new Machine(6, new Canal(Canal.OUT_RIGHT, Canal.BLUE, 1), new Canal(Canal.IN_LEFT, Canal.RED, 2), new Canal(Canal.IN_CENTER, Canal.GREEN, 1), "pack-o-matic");
+					
+			case "minigiga-bot" :
+				return new Machine(7, new Canal(Canal.OUT_RIGHT, Canal.ORANGE, 1), new Canal(Canal.IN_LEFT, Canal.RED, 2), new Canal(Canal.IN_CENTER, Canal.GREEN, 1), "minigiga-bot");
+				
+			case "reactor_4.6" :
+				return new Machine(7, new Canal(Canal.OUT_RIGHT, Canal.ORANGE, 1), new Canal(Canal.IN_LEFT, Canal.RED, 2), new Canal(Canal.IN_CENTER, Canal.GREEN, 1), "reactor_4.6");
+			
+			case "verdamp_2.1" :
+				return new Machine(5, new Canal(Canal.OUT_RIGHT, Canal.ORANGE, 1),  new Canal(Canal.IN_CENTER, Canal.ORANGE, 2), "verdamp_2.1");
+			
+			case "supershaker" :
+				return new Machine(6, new Canal(Canal.OUT_RIGHT, Canal.ORANGE, 1),  new Canal(Canal.IN_LEFT, Canal.RED, 2), new Canal(Canal.IN_RIGHT, Canal.GREEN, 3), "supershaker");
+				
+			case "superseal" :
+				return new Machine(6, new Canal(Canal.OUT_RIGHT, Canal.BLUE, 1),  new Canal(Canal.IN_CENTER, Canal.GREEN, 2), "superseal");
+				
 			default :
-				return null;
+				return new Machine(3, new Canal(Canal.OUT_LEFT, Canal.BLUE, 1), new Canal(Canal.IN_CENTER, Canal.RED, 3), "minimizer");
 		}
 		
 	}
@@ -100,6 +151,11 @@ public class Machine extends Composant
 	{
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public String getType() {
+		return "Machine";
 	}
 	
 }

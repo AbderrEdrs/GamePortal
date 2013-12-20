@@ -21,4 +21,9 @@ public class Container extends Composant
 		return null;
 	}
 
+	@Override
+	public String getType() {
+		return "Container";
+	}
+
 }

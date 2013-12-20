@@ -13,6 +13,7 @@ public class Plateau
 	
 	private Composant[][] plateau;
 	private ArrayList<Point> exceptions;
+	private ArrayList<Composant> composantsScore;
 	
 	Plateau()
 	{
@@ -20,6 +21,7 @@ public class Plateau
 		exceptions = new ArrayList<Point>();
 		exceptions.add(new Point(9, 6));
 		exceptions.add(new Point(9, 7));
+		composantsScore = new ArrayList<Composant>();
 		
 		//Machine m1 = new Machine(4, Canal.BLUE, 5, new Canal(Canal.IN_CENTER, Canal.RED, 5), "<img id=\"ok\" src=\"/assets/factory/img/machine.png\"/>");
 		//setComposant(c, 4, 8);
@@ -36,6 +38,31 @@ public class Plateau
 	public void setComposant(Composant c, int y, int x)
 	{
 		plateau[y - 1][x - 1] = c;
+		
+		if (c.getType().equals("Machine"))
+		{
+			composantsScore.add(c);
+		}
+	}
+	
+	public int getScore()
+	{
+		int score = 0;
+		
+		for (int i = 0; i < composantsScore.size(); i++)
+		{
+			if (composantsScore.get(i).getType().equals("Machine"))
+			{
+				Machine m = (Machine) composantsScore.get(i);
+				score += m.getProduction();
+			}
+		}
+		
+		composantsScore = new ArrayList<Composant>();
+		
+		System.out.println("score" + score);
+		
+		return score;
 	}
 	
 	public boolean exists(int x, int y)

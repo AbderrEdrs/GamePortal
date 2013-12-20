@@ -26,7 +26,10 @@
 									<td style="vertical-align : top;">
 										<button id="next" class="btn_validation">1er ROUND</button>
 										<div style="background-color : rgba(250,100,100,0.4);">
-											<div id="msg" style="line-height : 20px;">La machine MULTIFITTER nécessite d'être alimentée au niveau de son input gauche pour fonctionner correctement.</br>Ce problème doit être réglé si vous voulez passer au 2eme round.</div>
+											<div id="msg" style="line-height : 20px;">
+												<div id="description_composant"></div>
+												<div id="description_score">SCORE : 2</div>
+											</div>
 										</div>
 									</td>
 								</tr>
@@ -36,6 +39,7 @@
 											<tbody>
 												<tr>
 													<td style="width : 30%; vertical-align : top;">
+														<b></b><div class="title" style="text-align : center;">SHOP<br/><br/></div></b>
 														<div class="title">CONNECTORS</div>
 														<table id="connectors" style="width : 100%;">
 															<tbody>
@@ -45,7 +49,14 @@
 													</td>
 												</tr>
 												<tr>
-													<td style="width : 70%; vertical-align : top;"><div class="title">CONTAINERS</div></td>
+													<td style="width : 70%; vertical-align : top;">
+														<div class="title">CONTAINERS</div>
+														<table id="containers2" style="width : 100%;">
+															<tbody>
+																<tr></tr>
+															</tbody>
+														</table>
+													</td>
 												</tr>
 											</tbody>
 										</table>

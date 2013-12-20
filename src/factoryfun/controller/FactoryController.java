@@ -52,7 +52,19 @@ public class FactoryController
 			p.setComposant(m, y, x);
 			Message msg = p.check(x, y);
 			
-			return new JSONObject().put("isValid", (msg.getMsg().equals("v")) ? true : false).toString();
+			//return new JSONObject().put("isValid", (msg.getMsg().equals("v")) ? true : false).toString();
+			
+			return "La machine '" + name + "' a été posée sur le plateau avec les coordonnées [" + (y + 1) + "][" + (x + 1) + "] dans ce sens : " + direction;
+		}
+		
+		if (type.equals("container"))
+		{
+			return "Un container '" + name + "' a été posé sur le plateau avec les coordonnées [" + (y + 1) + "][" + (x + 1) + "].";
+		}
+		
+		if (type.equals("reservoir"))
+		{
+			return "Un réservoir '" + name + "' a été posé sur le plateau avec les coordonnées [" + (y + 1) + "][" + (x + 1) + "] dans ce sens : " + direction;
 		}
 		
 		/*p.setComposant(m, y, x);
@@ -68,6 +80,13 @@ public class FactoryController
 	public String extractMachine(Model model)
 	{
 		return init.getPartie().extractMachine();
+	}
+	
+	@RequestMapping("factoryfun/sendscore")
+	@ResponseBody
+	public String sendScore(Model model)
+	{
+		return init.getPartie().getJoueur().getPlateau().getScore() + "";
 	}
 	
 }

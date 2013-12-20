@@ -96,4 +96,9 @@ public class Connector extends Composant
 		return null;
 	}
 
+	@Override
+	public String getType() {
+		return "Connector";
+	}
+
 }

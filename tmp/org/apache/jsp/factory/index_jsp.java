@@ -69,7 +69,10 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\t\t\t\t\t\t\t\t\t<td style=\"vertical-align : top;\">\n");
       out.write("\t\t\t\t\t\t\t\t\t\t<button id=\"next\" class=\"btn_validation\">1er ROUND</button>\n");
       out.write("\t\t\t\t\t\t\t\t\t\t<div style=\"background-color : rgba(250,100,100,0.4);\">\n");
-      out.write("\t\t\t\t\t\t\t\t\t\t\t<div id=\"msg\" style=\"line-height : 20px;\">La machine MULTIFITTER nécessite d'être alimentée au niveau de son input gauche pour fonctionner correctement.</br>Ce problème doit être réglé si vous voulez passer au 2eme round.</div>\n");
+      out.write("\t\t\t\t\t\t\t\t\t\t\t<div id=\"msg\" style=\"line-height : 20px;\">\n");
+      out.write("\t\t\t\t\t\t\t\t\t\t\t\t<div id=\"description_composant\"></div>\n");
+      out.write("\t\t\t\t\t\t\t\t\t\t\t\t<div id=\"description_score\">SCORE : 2</div>\n");
+      out.write("\t\t\t\t\t\t\t\t\t\t\t</div>\n");
       out.write("\t\t\t\t\t\t\t\t\t\t</div>\n");
       out.write("\t\t\t\t\t\t\t\t\t</td>\n");
       out.write("\t\t\t\t\t\t\t\t</tr>\n");
@@ -79,6 +82,7 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\t\t\t\t\t\t\t\t\t\t\t<tbody>\n");
       out.write("\t\t\t\t\t\t\t\t\t\t\t\t<tr>\n");
       out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t<td style=\"width : 30%; vertical-align : top;\">\n");
+      out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t<b></b><div class=\"title\" style=\"text-align : center;\">SHOP<br/><br/></div></b>\n");
       out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"title\">CONNECTORS</div>\n");
       out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t<table id=\"connectors\" style=\"width : 100%;\">\n");
       out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<tbody>\n");
@@ -88,7 +92,14 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t</td>\n");
       out.write("\t\t\t\t\t\t\t\t\t\t\t\t</tr>\n");
       out.write("\t\t\t\t\t\t\t\t\t\t\t\t<tr>\n");
-      out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t<td style=\"width : 70%; vertical-align : top;\"><div class=\"title\">CONTAINERS</div></td>\n");
+      out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t<td style=\"width : 70%; vertical-align : top;\">\n");
+      out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"title\">CONTAINERS</div>\n");
+      out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t<table id=\"containers2\" style=\"width : 100%;\">\n");
+      out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<tbody>\n");
+      out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<tr></tr>\n");
+      out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</tbody>\n");
+      out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t\t</table>\n");
+      out.write("\t\t\t\t\t\t\t\t\t\t\t\t\t</td>\n");
       out.write("\t\t\t\t\t\t\t\t\t\t\t\t</tr>\n");
       out.write("\t\t\t\t\t\t\t\t\t\t\t</tbody>\n");
       out.write("\t\t\t\t\t\t\t\t\t\t</table>\n");

@@ -21,4 +21,9 @@ public class Reservoir extends Composant
 		return null;
 	}
 
+	@Override
+	public String getType() {
+		return "Reservoir";
+	}
+
 }
