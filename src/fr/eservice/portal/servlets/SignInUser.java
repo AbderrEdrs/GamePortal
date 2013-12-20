@@ -76,7 +76,7 @@ public class SignInUser extends HttpServlet {
 	       	forwardTo = "/signinUser.jsp";
 	       	style = "alert alert-error";
         }else {
-            message = "Bienveneue - votre compte a été bien créé !";
+            message = "Bienvenue - votre compte a été bien créé !";
        
 	        /*
 	         * Création du bean User et initialisation avec les données récupérées
@@ -87,7 +87,7 @@ public class SignInUser extends HttpServlet {
 	        user.setFirstname(firstname);
 	        user.setPassword(password);
 	        user.setEmail(email);
-	       
+	        
 	        if(avatarName.trim().isEmpty()) {
 	        	
 	        	user.setAvatar(avatarName);
@@ -113,10 +113,16 @@ public class SignInUser extends HttpServlet {
 	        	
 	        }
 	       
+	        if(!userdao.save(user)){
+	        		message = "Erreur lors de la création de vote compte ";
+	        		style = "alert alert-error";
+	        }else
+	        	style = "alert alert-success";
+	      
 	        /* Ajout du bean et du message à l'objet requête */
 	        request.setAttribute( "user", user );
 	        forwardTo = "/profil.jsp";
-	        style = "alert alert-success";
+	        
 	
         }
         request.setAttribute( "message", message );

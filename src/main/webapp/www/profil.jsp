@@ -40,11 +40,11 @@
 		        <%-- Affichage de la chaîne "message" transmise par la servlet --%>
 		        <div class="${ style }">${ message }</div>
 		        <%-- Puis affichage des données enregistrées dans le bean "client" transmis par la servlet --%>
-		        <div><img src="${ user.avatar }"></div>
+		        <div><img src="/assets/images/${user.avatar }"></div>
 		        <table id="tab1">
 					<tbody><tr>
 					<td id="col1">Pseudo</td>
-					<td id="col2">${ user.username }</td>
+					<td id="col2">${user.username }</td>
 					</tr>
 
 

@@ -56,11 +56,11 @@
                 <br />
 
                 <label for="lastname">Nom <span class="requis">*</span></label>
-                <input type="text" id="lastname" name="lastname" value="${ user.username }" class="input-block-level" required/>
+                <input type="text" id="lastname" name="lastname" value="${ user.lastname }" class="input-block-level" required/>
                 <br />
                 
                 <label for="firstname">Prénom <span class="requis">*</span></label>
-                <input type="text" id="firstname" name="firstname" value="${ user.username }"  class="input-block-level" required/>
+                <input type="text" id="firstname" name="firstname" value="${ user.firstname }"  class="input-block-level" required/>
                 <br />
                 
                 <label for="email">Adresse email <span class="requis">*</span></label>

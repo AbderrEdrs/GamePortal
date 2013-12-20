@@ -264,7 +264,7 @@ generateMachine('supershaker');
 generateMachine('pack-o-matic');*/
 generateReservoir('reservoir');
 generateReservoir('reservoir');
-generateReservoir('reservoir');
+generateReservoir('reservoir_black');
 /*generateMachine('minifreezer');
 generateMachine('holl_boxer');
 generateMachine('megabrowner');
@@ -342,7 +342,7 @@ for (i = 0; i < colonnes; i++)
 									xhr.send('name=' + cmd_pressed.name + '&type=' + cmd_pressed.type + '&x=' + this.j + '&y=' + this.i + '&direction=' + cmd_pressed.direction);
 									/**************************************************************************/
 									
-									/*******evenement pour le composant créé en cas de redeplacement ***********/
+									/*******evenement pour le composant cr���� en cas de redeplacement ***********/
 									var div_tmp = cmd_pressed.div;
 									
 									cmd_pressed.div = null;
@@ -382,7 +382,7 @@ for (i = 0; i < colonnes; i++)
 														}
 									},
 									false);*/
-									/*******evenement pour le composant créé en cas de redeplacement ***********/
+									/*******evenement pour le composant cr���� en cas de redeplacement ***********/
 								},
 				i : i,
 				j : j

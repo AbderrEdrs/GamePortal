@@ -38,7 +38,15 @@ public class ServletUsers extends HttpServlet{
         	
         }else{
         	// si l'utilisateur est dans la bd j'affiche son profil erreur sinns
-        	forwardTo = "/profil.jsp";
+        	if(userdao.checkeUserToConnect(email,password) != null){
+    	        User user = userdao.checkUserByEmail(email);
+    	        request.setAttribute( "user", user );
+        		forwardTo = "/profil.jsp";
+        	}else {
+                message = "Erreur - Vous email ou mot de passe n'est pas correct !";
+                forwardTo = "/index.jsp";
+                style = "alert alert-error";
+        	}
         }
        
         request.setAttribute( "message", message );

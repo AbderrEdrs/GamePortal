@@ -85,8 +85,8 @@ public class Machine extends Composant
 			case "maximixer" :
 				return new Machine(6, new Canal(Canal.OUT_RIGHT, Canal.ORANGE, 1), new Canal(Canal.IN_LEFT, Canal.RED, 2), new Canal(Canal.IN_CENTER, Canal.GREEN, 1), "maximixer");
 			
-			case "multifilter" :
-				return new Machine(6, new Canal(Canal.OUT_RIGHT, Canal.ORANGE, 1), new Canal(Canal.IN_LEFT, Canal.RED, 2), new Canal(Canal.IN_CENTER, Canal.GREEN, 1), "multifilter");
+			case "multifitter" :
+				return new Machine(6, new Canal(Canal.OUT_RIGHT, Canal.ORANGE, 1), new Canal(Canal.IN_LEFT, Canal.RED, 2), new Canal(Canal.IN_CENTER, Canal.GREEN, 1), "multifitter");
 				
 			case "minifreezer" :
 				return new Machine(7, new Canal(Canal.OUT_RIGHT, Canal.ORANGE, 1), new Canal(Canal.IN_LEFT, Canal.RED, 2), new Canal(Canal.IN_CENTER, Canal.GREEN, 1), "minifreezer");
